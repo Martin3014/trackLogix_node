@@ -182,7 +182,7 @@ exports.editYourAccount = async(req, res) => {
         return res.status(500).send({message: 'Error editing your account'})
     }
 }
-
+//test
 exports.deleteAccount = async(req, res) => {
     try{
         let customerId = req.user.sub
