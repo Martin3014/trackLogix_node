@@ -12,9 +12,18 @@ const packages = sequelize.define('packages', {
         primaryKey: true,
         allowNull: false
     },
-    tracking: DataTypes.INTEGER,
-    weight: DataTypes.STRING,
-    description: DataTypes.STRING
+    tracking: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    weight: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
     tableName: 'packages',
     timestamps: false

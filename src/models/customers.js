@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/db')
@@ -10,12 +10,29 @@ const customers = sequelize.define('customers', {
         primaryKey: true,
         allowNull: false,
     },
-    name: DataTypes.STRING,
-    surname: DataTypes.STRING,
-    code: DataTypes.STRING,
-    email: DataTypes.STRING,
-    phone: DataTypes.STRING,
-    password: DataTypes.STRING
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    surname: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    code: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    phone: {
+        type: DataTypes.STRING,
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
     tableName: 'customers', 
     timestamps: false, 

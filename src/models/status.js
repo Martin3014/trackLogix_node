@@ -10,9 +10,18 @@ const status = sequelize.define('status', {
         primaryKey: true,
         allowNull: false
     },
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    order: DataTypes.STRING
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    order: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 }, {
     tableName: 'status',
     timestamps: false
