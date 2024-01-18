@@ -112,13 +112,13 @@ exports.getYourPackages = async(req, res) => {
         let customerId = req.user.sub
         let packages = await Packages.findAll({
             where: {
-                id: customerId
+                status_id: customerId
             },
             attributes: {
                 exclude: ['id']
             }
         })
-        if(packages.length == 0) return res.status(404).send({message: 'You dont have packages'})
+        if(packages.length == 0) return res.status(202).send({message: 'You dont have packages'})
         return res.send(packages)
     }catch(err){
         console.error(err)
