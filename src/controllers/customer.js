@@ -193,9 +193,7 @@ exports.deleteAccount = async(req, res) => {
                 customer_id: customerId
             }
         })
-        if(hasPackage.length != 0 /*|| hasPackage.status_id != 5*/) return res.status(400).send({message: 'You cannot delete your account because you have a pending package'})
-
-        //console.log(hasPackage)
+        if(hasPackage.length != 0) return res.status(400).send({message: 'You cannot delete your account because you have a pending package'})
         await existCustomer.destroy()
         return res.send({message: 'Account delete succesfully'})
     }catch(err){
