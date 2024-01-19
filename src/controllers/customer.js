@@ -2,20 +2,10 @@
 
 const Customers = require('../models/customers')
 const Packages = require('../models/packages')
-const { checkPassword, encrypt, validateData } = require('../utils/validate')
+const { checkPassword, encrypt } = require('../utils/validate')
 const { createToken } = require('../services/jwt')
 const { compare } = require('bcrypt')
 require('sequelize')
-
-
-exports.test = async(req, res) => {
-    try{
-        return res.send({message: 'Test is running'})
-    }catch(err){
-        console.error(err)
-        return res.status(500).send({message: 'Error general'})
-    }
-}
 
 exports.login = async(req, res) => {
     try{
@@ -95,8 +85,7 @@ exports.getYourInfo = async(req, res) => {
                 id: customerId
             },
             attributes: {
-                exclude: ['password', 'id']
-
+                exclude: ['password', 'id',]
             }
         })
         if(!customerExist) return res.status(404).send({message: 'Customer not found'})
@@ -136,9 +125,7 @@ exports.updatePassword = async(req, res) => {
             after: data.after
         }
 
-        let msg = validateData(params)
         if(customerId != customerRouteId) return res.status(403).send({message: 'You cant edit this user'})
-        if(msg) return res.status(400).send({ msg });
         let customer = await Customers.findOne({
             where: {
                 id: customerRouteId
@@ -182,7 +169,7 @@ exports.editYourAccount = async(req, res) => {
         return res.status(500).send({message: 'Error editing your account'})
     }
 }
-//test
+
 exports.deleteAccount = async(req, res) => {
     try{
         let customerId = req.user.sub

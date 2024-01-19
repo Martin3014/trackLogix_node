@@ -6,7 +6,6 @@ const express = require('express')
 const api = express.Router()
 
 //Todas las rutas
-api.get('/test', customerController.test)
 api.post('/login', customerController.login)
 api.post('/register', customerController.register)
 api.get('/getInfo', ensureAuth, customerController.getYourInfo)
