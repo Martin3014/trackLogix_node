@@ -10,7 +10,7 @@ require('sequelize')
 exports.login = async(req, res) => {
     try{
         let data = req.body
-        if(!data.email || data.email == '' || !data.password || data.password == '') return res.status(400).send({message: 'The passoword and email are required'})
+        if(!data.email || data.mail == '' || !data.password || data.password == '') return res.status(400).send({message: 'The passoword and email are required'})
         let customerCredentials = await Customers.findOne({
             where: {
                 email: data.email,
@@ -52,21 +52,19 @@ const generateRandomCode = () => {
 exports.register = async(req, res) => {
     try{
         let data = req.body
-        if(!data.name || data.name == '' || !data.surname || data.surname == '' || !data.email || data.email == '' ||
-            !data.password || data.password == '') return res.status(402).send({message: 'This params are requerited'}); 
-        let emailExist = await Customers.findOne({
+        let mailExist = await Customers.findOne({
             where: {
-                email: data.email
+                mail: data.mail
             }
         })
-        if(emailExist) return res.status(401).send({message: 'Email already exist'})
+        if(mailExist) return res.status(401).send({message: 'mail is already exist'})
         data.password = await encrypt(data.password)
         const newCustomer = await Customers.create({
             name: data.name,
-            surname: data.surname,
+            last_name: data.last_name,
             code: generateRandomCode(),
-            email: data.email,
-            phone: data.phone,
+            mail: data.mail,
+            phone_number: data.phone_number,
             password: data.password
         });
 

@@ -14,7 +14,7 @@ const customers = sequelize.define('customers', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    surname: {
+    last_name: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -22,19 +22,19 @@ const customers = sequelize.define('customers', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    email: {
+    mail: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    phone: {
-        type: DataTypes.STRING,
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false
     },
+    phone_number: {
+        type: DataTypes.STRING,
+    }
 }, {
-    tableName: 'customers', 
+    tableName: 'Customer', 
     timestamps: false, 
 });
 

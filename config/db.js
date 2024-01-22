@@ -3,9 +3,9 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize({
-  database: "ProyectQuickBok",
+  database: "trackLogixDB",
   username: "postgres",
-  password: "Jetaboom2611",
+  password: "admin",
   host: "127.0.0.1",
   dialect: 'postgres',
 });
